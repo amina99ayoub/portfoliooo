@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Amina AL Ayoub</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom Styling for Consistency */
+    body {
+        
+      background: linear-gradient(135deg, #0b0b0b, #222323, #424243);
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    h2 {
+        
+      text-align: center;
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+    }
+
+    .certificate-card {
+      margin-bottom: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .certificate-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 255, 133, 0.4);
+    }
+
+    .certificate-img {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .card-body {
+      text-align: center;
+      color: #fff;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .container {
+      margin-top:50px;
+      padding: 0 30px;
+    }
+
+    .col-lg-4, .col-md-6 {
+        
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-custom {
+      cursor: pointer;
+      position: relative;
+      padding: 10px 24px;
+      font-size: 18px;
+      color: #00d4ff;
+      border: 2px solid #00d4ff;
+      border-radius: 34px;
+      background-color: transparent;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      overflow: hidden;
+    }
+
+    .btn-custom::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 52px;
+      height: 50px;
+      border-radius: inherit;
+      scale: 0;
+      z-index: -1;
+      background-color: #fff;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .btn-custom:hover::before {
+      scale: 3;
+    }
+
+    .btn-custom:hover {
+      color: #212121;
+      box-shadow: 0 0px 20px rgba(0, 255, 133, 0.4);
+    }
+
+    .btn-custom:active {
+      scale: 1;
+    }
+    .custom-navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      height: 70px;
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    .navbar-toggler {
+    border: none; 
+    color: transparent; /* Remove border */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #ffffff00; /* Optional: Change the color of the hamburger icon */
+  }
+    /* Navbar Links Styling */
+    .navbar-links {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      position: relative;
+      padding: 10px;
+      transition: color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .navbar-links::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.7);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      box-shadow: 0 -5px 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .navbar-links:hover::after {
+      width: 100%;
+      box-shadow: 0 -10px 20px rgb(255, 255, 255);
+    }
+
+    .navbar-links:hover {
+      color: #f0f0f0;
+    }
+
+    /* Dropdown Menu Styling */
+    .dropdown-menu {
+      background-color: rgba(0, 0, 0, 0.8);
+      border: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .dropdown-menu .dropdown-item {
+      color: white;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Hover effect for dropdown items */
+    .dropdown-menu .dropdown-item:hover {
+      background-color: rgba(255, 255, 255, 0.2); /* Light translucent background */
+      color: #f0f0f0; /* Slightly lighter text color */
+      border-radius: 10px; /* Optional rounded corners */
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* Soft glow effect */
+    }
+    @media (max-width: 768px) {
+    .navbar-collapse {
+      background-color: rgba(0, 0, 0, 0.8);
+      border: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      
+  }
+  .navbar-links{
+    align-items: center;
+    text-align: center;
+    color: white;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .navbar-links:hover{
+    background-color: rgba(255, 255, 255, 0.2); /* Light translucent background */
+      color: #f0f0f0; /* Slightly lighter text color */
+      border-radius: 10px; /* Optional rounded corners */
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* Soft glow effect */
+  }
+}
+@media (max-width: 730px) {
+  .custom-navbar {
+    width: 100%; /* Make the navbar full-width on small screens */
+    padding: 10px 15px; /* Adjust padding for better spacing */
+    justify-content: space-between; /* Ensure links and toggler are spaced out */
+    left: 0; /* Align the navbar with the screen edges */
+    transform: none; /* Remove horizontal centering */
+  }
+
+  .navbar-brand {
+    flex: 1; /* Allow the brand to take up space */
+  }
+
+  .navbar-toggler {
+    margin-left: auto; /* Push the hamburger icon to the right */
+  }
+}
+    .cont{
+      margin-top:30%;
+        letter-spacing: -0.1vw;
+    font-size: 4.9vw;
+    line-height: 110%;
+    margin-left: 20px;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.313), 0 0 20px rgba(255, 255, 255, 0.203), 0 0 30px rgba(255, 255, 255, 0.349);
+    }
+    body {
+  margin: 0;
+  padding: 0;
+}
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.pl {
+  width: 6em;
+  height: 6em;
+}
+
+.pl__ring {
+  animation: ringA 2s linear infinite;
+}
+
+.pl__ring--a {
+  stroke: #f42f25;
+}
+
+.pl__ring--b {
+  animation-name: ringB;
+  stroke: #f49725;
+}
+
+.pl__ring--c {
+  animation-name: ringC;
+  stroke: #255ff4;
+}
+
+.pl__ring--d {
+  animation-name: ringD;
+  stroke: #f42582;
+}
+
+/* Animations */
+@keyframes ringA {
+  from, 4% {
+    stroke-dasharray: 0 660;
+    stroke-width: 20;
+    stroke-dashoffset: -330;
+  }
+
+  12% {
+    stroke-dasharray: 60 600;
+    stroke-width: 30;
+    stroke-dashoffset: -335;
+  }
+
+  32% {
+    stroke-dasharray: 60 600;
+    stroke-width: 30;
+    stroke-dashoffset: -595;
+  }
+
+  40%, 54% {
+    stroke-dasharray: 0 660;
+    stroke-width: 20;
+    stroke-dashoffset: -660;
+  }
+
+  62% {
+    stroke-dasharray: 60 600;
+    stroke-width: 30;
+    stroke-dashoffset: -665;
+  }
+
+  82% {
+    stroke-dasharray: 60 600;
+    stroke-width: 30;
+    stroke-dashoffset: -925;
+  }
+
+  90%, to {
+    stroke-dasharray: 0 660;
+    stroke-width: 20;
+    stroke-dashoffset: -990;
+  }
+}
+
+@keyframes ringB {
+  from, 12% {
+    stroke-dasharray: 0 220;
+    stroke-width: 20;
+    stroke-dashoffset: -110;
+  }
+
+  20% {
+    stroke-dasharray: 20 200;
+    stroke-width: 30;
+    stroke-dashoffset: -115;
+  }
+
+  40% {
+    stroke-dasharray: 20 200;
+    stroke-width: 30;
+    stroke-dashoffset: -195;
+  }
+
+  48%, 62% {
+    stroke-dasharray: 0 220;
+    stroke-width: 20;
+    stroke-dashoffset: -220;
+  }
+
+  70% {
+    stroke-dasharray: 20 200;
+    stroke-width: 30;
+    stroke-dashoffset: -225;
+  }
+
+  90% {
+    stroke-dasharray: 20 200;
+    stroke-width: 30;
+    stroke-dashoffset: -305;
+  }
+
+  98%, to {
+    stroke-dasharray: 0 220;
+    stroke-width: 20;
+    stroke-dashoffset: -330;
+  }
+}
+
+@keyframes ringC {
+  from {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: 0;
+  }
+
+  8% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -5;
+  }
+
+  28% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -175;
+  }
+
+  36%, 58% {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: -220;
+  }
+
+  66% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -225;
+  }
+
+  86% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -395;
+  }
+
+  94%, to {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: -440;
+  }
+}
+
+@keyframes ringD {
+  from, 8% {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: 0;
+  }
+
+  16% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -5;
+  }
+
+  36% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -175;
+  }
+
+  44%, 50% {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: -220;
+  }
+
+  58% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -225;
+  }
+
+  78% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -395;
+  }
+
+  86%, to {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: -440;
+  }
+}
+
+  </style>
+</head>
+<body>
+ <!-- Loader -->
+ <div id="loader" class="loader-overlay">
+  <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+    <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+    <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+    <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+    <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+  </svg>
+</div>
+
+<script>
+window.onload = function() {
+// Wait for the entire page to load, then hide the loader and show the content
+const loader = document.getElementById('loader');
+const mainContent = document.getElementById('main-content');
+
+loader.style.display = 'none';  // Hide the loader
+mainContent.style.display = 'block';  // Show the main content
+};
+</script>
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+      <a class='navbar-brand navbar-links' href='/'>Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class='nav-link navbar-links' href='info.html'>About</a>
+          </li>
+          <li class="nav-item">
+            <a class='nav-link navbar-links' href='work.html'>Education</a>
+          </li>
+          <li class="nav-item">
+            <a class='nav-link navbar-links' href='project.html'>Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class='nav-link navbar-links' href='certificates.html'>Certificates</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Container for certificates -->
+  <div class="container my-5 ">
+    <h2 class="cont">Certificates of Workshops and Programs</h2>
+    
+    <div class="row">
+      
+      <!-- AI Prompting and AI Tools Workshop -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_20241004-222911_Samsung Internet.jpg" class="card-img-top certificate-img" alt="Computer Skills & Tools Workshop">
+          <div class="card-body">
+            <h5 class="card-title">Computer Skills & Tools Workshop</h5>
+            <p class="card-text">Exploring models, reinforcement learning, and how interprets emotions.</p>
+         
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantum AI Webinar -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_20241023-185538_Drive.jpg" class="card-img-top certificate-img" alt="THE T IN STEAM">
+          <div class="card-body">
+            <h5 class="card-title">THE T IN STEAM</h5>
+            <p class="card-text">Discovering how computing enhances AI's capabilities.</p>
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- Public Speaking Workshop -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_٢٠٢٤١٢٢٦_٢١٥٠٣٢_LinkedIn.jpg" class="card-img-top certificate-img" alt="Public Speaking Workshop">
+          <div class="card-body">
+            <h5 class="card-title">Public Speaking Workshop</h5>
+            <p class="card-text">Improved my public speaking skills and confidence through interactive activities.</p>
+          
+          </div>
+        </div>
+      </div>
+
+      <!-- Entrepreneurship Course -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_٢٠٢٤١٢٢٦_٢١٥٠٣٨_LinkedIn.jpg" class="card-img-top certificate-img" alt="Entrepreneurship Course">
+          <div class="card-body">
+            <h5 class="card-title">Entrepreneurship Course</h5>
+            <p class="card-text">Learning how to identify opportunities and develop strategic business plans.</p>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Freelance Program -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_٢٠٢٤١٢٢٦_٢١٥٠٤٤_LinkedIn.jpg" class="card-img-top certificate-img" alt="Freelance Program">
+          <div class="card-body">
+            <h5 class="card-title">Freelance Program</h5>
+            <p class="card-text">Gaining hands-on exposure to real-world projects and client management.</p>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Beyond Application Success Program -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_20241012-180917_Drive.jpg" class="card-img-top certificate-img" alt="TAQA SPACE">
+          <div class="card-body">
+            <h5 class="card-title">TAQA SPACE</h5>
+            <p class="card-text">Sharpened communication and essay-writing skills while leading a team.</p>
+           
+          </div>
+        </div>
+      </div>
+      <!-- Beyond Application Success Program -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_٢٠٢٤١٢٢٦_٢١٥٠٢٠_LinkedIn.jpg" class="card-img-top certificate-img" alt="TAQA SPACE">
+          <div class="card-body">
+            <h5 class="card-title">Arabs Reading Challenge</h5>
+            <p class="card-text">I won the first place</p>
+           
+          </div>
+        </div>
+      </div>
+      <!-- Beyond Application Success Program -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_٢٠٢٤١٢٢٦_٢١٤٩٣٥_LinkedIn.jpg" class="card-img-top certificate-img" alt="American Corner">
+          <div class="card-body">
+            <h5 class="card-title">American Corner in Beriut</h5>
+            <p class="card-text">STEM Electromagnetic crane and Sharpened communication and essay-writing skills while leading a team.</p>
+           
+          </div>
+        </div>
+      </div>
+      <!-- Beyond Application Success Program -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card certificate-card">
+          <img src="Screenshot_٢٠٢٤١٢٢٦_٢١٥٠٠٩_LinkedIn.jpg" class="card-img-top certificate-img" alt="TAQA SPACE">
+          <div class="card-body">
+            <h5 class="card-title">Imagine Girls in STEAM</h5>
+            <p class="card-text">Sharpened communication and essay-writing skills while leading a team.</p>
+           
+          </div>
+        </div>
+      </div>
+    </div> <!-- End of Row -->
+  </div> <!-- End of Container -->
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <footer>
+    <div class="footer-container">
+        <div class="logo-container">
+          <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+         
+            <h2 class="website-name">Reach Out</h2>
+        </div>
+        
+        <div class="social-card">
+          <a href="mailto:codebraver19@codebrave.org" class="socialContainer containerOne">
+           <svg  class="socialSvg instagramSvg"
+            height="32"
+            width="32"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="group-hover:fill-[#171543] fill-white duration-300"
+              d="M28 5H4c-1.104 0-2 .896-2 2v18c0 1.104.896 2 2 2h24c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2zm0 4.879L16 18 4 9.879V7l12 8 12-8v2.879zM4 23V11.885l11.446 7.63c.269.18.594.274.921.274s.652-.094.92-.274L28 11.885V23H4z"
+              fill="#FFFFFF"
+            ></path>
+          </svg>
+          </a>
+          
+            <a class="socialContainer containerTwo" data-social="youtube" aria-label="Youtube" href="https://youtube.com/@codewithamina?si=rPPkWmfVMcaMGPkS">
+              <svg  class="socialSvg instagramSvg" 
+                xml:space="preserve"
+                viewBox="0 0 16 16"
+                class="bi bi-youtube"
+                fill="currentColor"
+                height="16"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="currentColor"
+                  d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"
+                ></path>
+              </svg>
+            </a>
+          </li>
+            
+          <a href="https://www.linkedin.com/in/amina-al-ayoub-192a40318" class="socialContainer containerThree">
+            <svg class="socialSvg linkdinSvg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+          </a>
+          
+                   
+        
+        
+          
+</footer>
+  <style>
+    
+footer {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+background-color: #2d2c2c; /* Dark background for the footer */
+border-radius: 100px;
+color: #fff; /* White text */
+padding: 20px; /* Space around the content */
+text-align: center; /* Centered text */
+margin-top: 10%;
+}
+
+.footer-container {
+display: flex; /* Flexbox for layout */
+justify-content: space-between; /* Space between logo and socials */
+align-items: center; /* Center items vertically */
+}
+
+.footer-logo {
+width: 50px; /* Adjust logo size as needed */
+height: auto; /* Maintain aspect ratio */
+}
+
+.website-name {
+margin-left: 10px; /* Space between logo and name */
+font-size: 30px;
+}
+
+.socials a {
+margin: 0 10px; /* Space between social links */
+color: #fff; /* White text for links */
+text-decoration: none; /* Remove underline */
+}
+
+.socials a:hover {
+text-decoration: underline; /* Underline on hover */
+}
+
+.social-card {
+width: fit-content;
+height: fit-content;
+background-color: transparent;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 25px 25px;
+gap: 20px;
+}
+
+/* for all social containers*/
+.socialContainer {
+width: 52px;
+height: 52px;
+background-color: rgb(44, 44, 44);
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+transition-duration: .3s;
+}
+/* instagram*/
+.containerOne:hover {
+background-color: #0077ff;
+transition-duration: .3s;
+}
+/* twitter*/
+.containerTwo:hover {
+background-color: #ff0303;
+transition-duration: .3s;
+}
+/* linkdin*/
+.containerThree:hover {
+background-color: #0072b1;
+transition-duration: .3s;
+}
+/* Whatsapp*/
+.containerFour:hover {
+background-color: #128C7E;
+transition-duration: .3s;
+}
+
+.socialContainer:active {
+transform: scale(0.9);
+transition-duration: .3s;
+}
+
+.socialSvg {
+width: 17px;
+}
+
+.socialSvg path {
+fill: rgb(255, 255, 255);
+}
+
+.socialContainer:hover .socialSvg {
+animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+0% {
+transform: translateY(-50px);
+opacity: 0;
+}
+
+100% {
+transform: translateY(0);
+opacity: 1;
+}
+}
+
+
+  </style>
+</body>
+</html>
